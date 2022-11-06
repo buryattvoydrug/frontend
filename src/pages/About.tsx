@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { useParams } from 'react-router-dom';
@@ -10,6 +10,9 @@ import { IAboutResponse } from '../types';
 
 export default function About() {
   let { slug } = useParams();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       <main className="">
@@ -27,10 +30,10 @@ export default function About() {
                 </ul>
             </div>
         </nav>
-
-        <div className="page-content">
-    <section className="contact-section" style={{textAlign: 'left'}}>
-        <div className="row pl-3">
+    <div className="container">
+    <div className="page-content ">
+    <section className="contact-section" >
+        <div className="row pl-8">
             <div className="col-lg-12 mr-2 mb-8">
           <Query query={ABOUT_QUERY} slug={slug}>
             {({ data: { about } }: IAboutResponse) => {
@@ -45,6 +48,8 @@ export default function About() {
         </div>
     </section>
     </div>
+    </div>
+        
         
         </main>
 

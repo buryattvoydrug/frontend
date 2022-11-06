@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 import HEADER_QUERY from '../queries/pages/header';
 import { IHeaderResponse } from '../types';
 import Menu from './Menu';
@@ -62,7 +63,7 @@ export default function MainHeader() {
             const data = header.data.attributes;
           return (
                 <>
-                <Link to="contact-us#zayavka"> <button className="btn">Оставить заявку</button></Link>
+                <HashLink to="contact-us#zayavka"> <button className="btn" style={{marginRight: '20px'}}>Оставить заявку</button></HashLink>
                 <div className="header-call d-xs-show d-lg-flex align-items-center">
                     <Link to="tel:+7(911)344-09-22" className="w-icon-call"></Link>
                     <div className="call-info d-xl-show">

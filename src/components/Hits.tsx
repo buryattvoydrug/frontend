@@ -27,14 +27,14 @@ export default function Hits() {
                         <>
                         <div className="product product-widget pt-0">
                               <figure className="product-media">
-                                  <Link to="shop-stroi-material">
+                                  <Link to="shop-stroi-material" onClick={()=>document.body.classList.remove('right-sidebar-active')}>
                                       <img src={imageUrl}
                                           alt="Product" width="300" height="338" />
                                   </Link>
                               </figure>
                               <div className="product-details">
                                   <h4 className="product-name">
-                                      <Link to="shop-stroi-material">{hit.attributes.title}</Link>
+                                      <Link to="shop-stroi-material" onClick={()=>document.body.classList.remove('right-sidebar-active')}>{hit.attributes.title}</Link>
                                   </h4>
                                   <div className="product-price">
                                       <ins className="new-price">{hit.attributes.price}₽</ins>

@@ -59,14 +59,15 @@ export default function ProdList(props: any) {
         {localStorage.getItem('search') &&
                             <h3>Результаты по запросу {localStorage.getItem('search')}:</h3>
                         }
-          <div  className="product-wrapper row cols-xl-5 cols-lg-3 cols-md-4 cols-sm-3 cols-2">
-            {items.length === 0? 
-                <h3>Не найдено. <Link to="/shop-stroi-material" onClick={()=>localStorage.setItem('search', '')}>Показать всё</Link></h3>
+              {items.length === 0? 
+                <h3>Не найдено.</h3>
             :''}
+          <div  className="product-wrapper row cols-xl-5 cols-lg-3 cols-md-4 cols-sm-3 cols-2">
+            
             {items.map((product: any) => {
               return (
                 <>
-                <div  className="product-wrap">
+                <div  className="product-wrap" style={{paddingBottom: '10px'}}>
                     <div  className="product text-center">
                         <figure  className="product-media">
                             <div>

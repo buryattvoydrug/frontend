@@ -9,9 +9,9 @@ function ShopDropdownItem(props:any) {
   const item = props.item;
   return (
     <>
-    <div  className="widget widget-collapsible" onClick={()=>setCollapse(!collapse)}>
+    <div  className="widget widget-collapsible" onClick={()=>setCollapse(!collapse)} style={{cursor: 'pointer'}}>
         {item.attributes.podkategoriyass.data.length?<h3  className={!collapse? "widget-title collapsed" : "widget-title"}>
-            <label>{item.attributes.name}</label>
+            <label style={{cursor: 'pointer'}}>{item.attributes.name}</label>
              <span className="toggle-btn"></span>
         </h3> : ''}
         {
@@ -21,7 +21,7 @@ function ShopDropdownItem(props:any) {
             {item.attributes.podkategoriyass.data.map((podkategoriya: any)=>{
                 return (
                     <>
-                        <li><Link to={'/shop-stroi-material/'+podkategoriya.attributes.slug}>{podkategoriya.attributes.title}</Link></li>
+                        <li ><Link to={'/shop-stroi-material/'+podkategoriya.attributes.slug}>{podkategoriya.attributes.title}</Link></li>
                     </>
                 )
             })}

@@ -17,20 +17,20 @@ export default class Menu extends Component {
                         <>
                         {category.attributes.podkategoriyass.data.length !== 0?
                         <li>
-                            <a >
+                            <a style={{cursor:'pointer'}}>
                                 {/* <i className="w-icon-tshirt2"></i> */}
                                 {category.attributes.name}
                             </a>
                             
                             <ul className="megamenu">
                                 <li>
-                                    <h4 className="menu-title">{category.attributes.name}</h4>
+                                    <h4 className="menu-title" style={{cursor:'pointer'}}>{category.attributes.name}</h4>
                                     <hr className="divider" />
                                     <ul>
                                         {category.attributes.podkategoriyass.data.map((podkategoriya: any)=>{
                                             return (
                                                 <>
-                                                    <li><Link to={'/shop-stroi-material/'+podkategoriya.attributes.slug}>{podkategoriya.attributes.title}</Link></li>
+                                                    <li><Link to={'/shop-stroi-material/'+podkategoriya.attributes.slug} >{podkategoriya.attributes.title}</Link></li>
                                                 </>
                                             )
                                         })}
@@ -48,6 +48,7 @@ export default class Menu extends Component {
             );
         }}
         </Query>
+        <li><Link to='/shop-stroi-material/'><strong>Все Категории</strong></Link></li>
       </>
     )
   }

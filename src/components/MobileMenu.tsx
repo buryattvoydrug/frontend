@@ -21,13 +21,11 @@ export default function MobileMenu() {
   {/* <!-- End of .mobile-menu-close --> */}
 
   <div className="mobile-menu-container scrollable">
-      <form action="#" method="get" className="input-wrapper">
+      <form  className="input-wrapper">
           <input type="text" className="form-control" name="search" autoComplete="off" placeholder="Поиск" required 
           value={search} onChange={(event)=>handleInputChange(event.currentTarget.value)}/>
-          <Link to="/shop-stroi-material">
-          <button onClick={()=>document.body.classList.remove('mmenu-active')} className="btn btn-search" type="submit">
-              <i className="w-icon-search"></i>
-          </button>
+          <Link to="/shop-stroi-material" onClick={()=>document.body.classList.remove('mmenu-active')} className="btn btn-search" style={{paddingTop: "10px"}}>
+                <i className="w-icon-search"></i>
           </Link>
           
       </form>
@@ -35,10 +33,10 @@ export default function MobileMenu() {
       <div className="tab">
           <ul className="nav nav-tabs" role="tablist">
               <li className="nav-item" onClick={()=>{setActive(!active);setShow(false)}} >
-                  <a href="#main-menu" className={!active? "nav-link active": "nav-link"}>Mеню</a>
+                  <a  className={!active? "nav-link active": "nav-link"}>Mеню</a>
               </li>
               <li className="nav-item" onClick={()=>setActive(!active)} >
-                  <a href="#categories" className={active? "nav-link active": "nav-link"}>Категории</a>
+                  <a  className={active? "nav-link active": "nav-link"}>Категории</a>
               </li>
           </ul>
       </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link';
 import FOOTER_QUERY from '../queries/pages/footer';
 import HEADER_QUERY from '../queries/pages/header';
 import CATEGORIES_QUERY from '../queries/products/categories';
@@ -62,7 +63,7 @@ export default function Header(prop: any) {
             const data = header.data.attributes;
           return (
                 <>
-                <Link to="contact-us#zayavka"> <button className="btn">Оставить заявку</button></Link>
+                <HashLink to="contact-us#zayavka"> <button className="btn" style={{marginRight: '20px'}}>Оставить заявку</button></HashLink>
                 <div className="header-call d-xs-show d-lg-flex align-items-center">
                     <Link to="tel:+7(911)344-09-22" className="w-icon-call"></Link>
                     <div className="call-info d-xl-show">
@@ -92,7 +93,7 @@ export default function Header(prop: any) {
         <div className="inner-wrap">
             <div className="header-left">
                 <div className="dropdown category-dropdown has-border" data-visible="true" >
-                    <Link to="/" className="category-toggle" role="button"  data-toggle="dropdown" aria-haspopup="true"
+                    <Link to="/shop-stroi-material" className="category-toggle" role="button"  data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="true" data-display="static" title="Browse Categories">
                         <i className="w-icon-category"></i>
                         <span>Категории</span>
@@ -125,7 +126,7 @@ export default function Header(prop: any) {
         <div className="inner-wrap">
             <div className="header-left">
                 <div className="dropdown category-dropdown has-border" data-visible="true" >
-                    <Link to="/" className="category-toggle" role="button"  data-toggle="dropdown" aria-haspopup="true"
+                    <Link to="/shop-stroi-material" className="category-toggle" role="button"  data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="true" data-display="static" title="Browse Categories">
                         <i className="w-icon-category"></i>
                         <span>Категории</span>

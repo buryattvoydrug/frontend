@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,6 +10,9 @@ import { IFooterResponse } from '../types';
 
 export default function Contacts() {
   let { slug } = useParams();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    }, [])
   return (
     <>
       <main className="">

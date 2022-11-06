@@ -9,11 +9,13 @@ import Partners from "../components/Partners";
 import Preferences from "../components/Preferences";
 
 export default function Main() {
-    
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        }, [])
   return (
     <>
       <div className="main">
-            <section className="intro-section bg-grey">
+            <section className="intro-section">
                 <div className="container">
                     <div className="intro-wrapper pt-4">
                         <div className="row">

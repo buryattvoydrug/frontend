@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
@@ -40,6 +40,9 @@ export default function Shop() {
     function removeBrand(item:string) {
         setBrand((prevState)=> ([...prevState].filter((element)=>element!==item)))
     }
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        }, [])
   return (
     <>
       <main  className="">
@@ -54,11 +57,11 @@ export default function Shop() {
 
             <div  className="container-fluid">
                 <div  className="shop-content row gutter-lg">
-                    <aside  className="sidebar shop-sidebar left-sidebar sticky-sidebar-wrapper sidebar-fixed">
+                    <aside  className="sidebar shop-sidebar left-sidebar sticky-sidebar-wrapper sidebar-fixed" >
                         <div  className="sidebar-overlay" onClick={()=>document.body.classList.remove('sidebar-active')} ></div>
                         <div  className="sidebar-close" onClick={()=>document.body.classList.remove('sidebar-active')}><i  className="close-icon"></i></div>
 
-                        <div  className="sidebar-content scrollable">
+                        <div  className="sidebar-content scrollable" style={{padding: '10px 0 10px 20px'}}>
                             <div  className="sticky-sidebar">
                                 <div style={{paddingRight:'15px'}} className="filter-actions">
                                     <label>Фильтр :</label>
@@ -78,10 +81,10 @@ export default function Shop() {
                                         </ul>
                                         <form className="price-range">
                                             <input type="number" name="min_price" className="min_price text-center" placeholder="₽min" 
-                                               value={min} onChange={(event) => setMin(event.currentTarget.value)}/>
+                                               value={min} onChange={(event) => setMin(event.currentTarget.value)} style={{width:'90px'}}/>
                                             <span  className="delimiter">-</span>
                                             <input type="number" name="max_price"  className="max_price text-center" placeholder="₽max" 
-                                               value={max} onChange={(event) => setMax(event.currentTarget.value)}/>
+                                               value={max} onChange={(event) => setMax(event.currentTarget.value)} style={{width:'90px'}}/>
                                             {/* <a href="/"  className="btn btn-primary btn-rounded">найти </a> */}
                                         </form>
                                     </div>
@@ -119,8 +122,7 @@ export default function Shop() {
 
                         
                         <ProdList brand={!brand.length? allBrands: brand} priceFrom={+min} priceTo={+max} search={localStorage.getItem('search')}/>
-                        
-                        
+                        <h3><Link style={{fontSize:'18px'}} to="/shop-stroi-material" onClick={()=>{setMin('0'); setMax('1000000000'); setBrand([]);localStorage.setItem('search', '');}}>Показать все товары</Link></h3>
                     </div>
 
 

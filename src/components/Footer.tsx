@@ -100,24 +100,25 @@ export default function Footer() {
         }}
       </Query>
           </div>
-          <div className="footer-bottom">
-            <div className="footer-left">
-                <p className="copyright">Copyright © 2022 by buryattvoydrug.</p>
+          <div className="page-wrapper home">
+            <div className="footer">
+                <div className="container">
+                
+                <div className="footer-bottom" style={{display:'flex', justifyContent:'space-between',padding: '30px 0 10px'}}>
+                <div className="footer-left">
+                    <p className="copyright">Copyright © 2022 by Boyukzadekh.</p>
+                </div>
+                <div className="footer-right">
+                    <a href="https://www.liveinternet.ru/click"
+                    target="_blank"><img id="licntF655" width="88" height="15" style={{border:'0'}} 
+                    title="LiveInternet: показано число посетителей за сегодня"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                    alt=""/></a>
+                </div>
+                </div>
+                </div>
             </div>
-            <div className="footer-right">
-                {/* <a href="https://www.liveinternet.ru/click" target="_blank"><img id="licntF516"
-                        width="88" height="15" style="border:0" title="LiveInternet: показано число посетителей за сегодня"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7" alt="" /></a>
-                <script>(function (d, s) {
-                        d.getElementById("licntF516").src =
-                            "https://counter.yadro.ru/hit?t26.6;r" + escape(d.referrer) +
-                            ((typeof (s) == "undefined") ? "" : ";s" + s.width + "*" + s.height + "*" +
-                                (s.colorDepth ? s.colorDepth : s.pixelDepth)) + ";u" + escape(d.URL) +
-                            ";h" + escape(d.title.substring(0, 150)) + ";" + Math.random()
-                    })
-                        (document, screen)</script> */}
             </div>
-          </div>
           </div>
           </footer>
           
