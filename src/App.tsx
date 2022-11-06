@@ -41,7 +41,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main/>} />
           <Route path="/shop-stroi-material" element={<Shop/>} />
-          <Route path="/shop-stroi-material/:slug*" element={<Shop/>} />
+          <Route path="/shop-stroi-material/:slug" element={<Shop/>} />
           <Route path="/contact-us" element={<Contacts/>} />
           <Route path="/about-us" element={<About/>} />
         </Routes>
