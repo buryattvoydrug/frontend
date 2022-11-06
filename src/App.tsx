@@ -23,6 +23,7 @@ import Header from './components/Header';
 function App() {
   const loc = useLocation();
   const [location, setLocation] = useState(loc.pathname);
+  localStorage.setItem('search', '');
   useEffect(() => {
     if (location !== loc.pathname) {
       // window.location.reload();
@@ -41,6 +42,7 @@ function App() {
           <Route path="/" element={<Main/>} />
           <Route path="/shop-stroi-material" element={<Shop/>} />
           <Route path="/shop-stroi-material/:slug" element={<Shop/>} />
+          <Route path="/shop-stroi-material/*/:slug" element={<Shop/>} />
           <Route path="/contact-us" element={<Contacts/>} />
           <Route path="/about-us" element={<About/>} />
         </Routes>
