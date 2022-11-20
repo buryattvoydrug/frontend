@@ -57,14 +57,14 @@ export default function ProdList(props: any) {
                 </div>
             </div>
             <div  className="toolbox-right">
-                <div  className="toolbox-item toolbox-show select-box">
-                    <select name="count"  className="form-control" value={pageSize} onChange={(e)=>setPageSize(+e.currentTarget.value)}>
+                {/* <div  className="toolbox-item toolbox-show select-box">
+                    <select name="count"  className="form-control" value={pageSize} onChange={(e)=>{setPageSize(+e.currentTarget.value);}}>
                         <option value={12}>Показать 12</option>
                         <option value={24}>Показать 24</option>
                         <option value={36}>Показать 36</option>
                         <option value={72}>Показать 72</option>
                     </select>
-                </div>
+                </div> */}
             </div>
         </nav>
         {localStorage.getItem('search') &&
@@ -97,8 +97,9 @@ export default function ProdList(props: any) {
                             <div  className="product-pa-wrapper">
                                 <div  className="product-price">
                                     {product.attributes.priceText === 'от' && product.attributes.priceText+' '}
-                                    {product.attributes.price > 1 ? priceToString(product.attributes.price) :
-                                    product.attributes.priceText}
+                                    {product.attributes.priceText === null && priceToString(product.attributes.price)}
+                                    {product.attributes.price > 1 && product.attributes.priceText !== null && priceToString(product.attributes.price) + product.attributes.priceText}
+                                    {product.attributes.price === 1 && product.attributes.priceText}
                                 </div>
                             </div>
                         </div>
@@ -116,31 +117,31 @@ export default function ProdList(props: any) {
               <ul  className="pagination" style={{cursor:'pointer'}}>
                   {page > 1 ?
                   <li  className="prev">
-                      <div onClick={()=>setPage((prev)=>prev-1)} aria-label="Previous">
+                      <div onClick={()=>{setPage((prev)=>prev-1);window.scrollTo(0, 0);}} aria-label="Previous">
                           <i  className="w-icon-long-arrow-left"></i>Назад
                       </div>
                   </li> : ''}
                   {page-2 > 0?
-                  <li  onClick={()=>setPage(page-2)} className="page-item ">
+                  <li  onClick={()=>{setPage(page-2);window.scrollTo(0, 0);}} className="page-item ">
                       <div  className="page-link" >{page-2}</div>
                   </li>:""}
-                  {page-1> 0?<li  className="page-item" onClick={()=>setPage(page-1)}>
+                  {page-1> 0?<li  className="page-item" onClick={()=>{setPage(page-1);window.scrollTo(0, 0);}}>
                       <div  className="page-link" >{page-1}</div>
                   </li>:''}
                   {paginationInfo.pageCount !== 1 ? <li   className="page-item active">
                       <div  className="page-link" >{page}</div>
                   </li>: ''}
                   {page+1<=paginationInfo.pageCount?
-                  <li className="page-item" onClick={()=>setPage(page+1)}>
+                  <li className="page-item" onClick={()=>{setPage(page+1);window.scrollTo(0, 0);}}>
                       <div  className="page-link" >{page+1}</div>
                   </li>:''}
                   {page+2<=paginationInfo.pageCount?
-                  <li  onClick={()=>setPage(page+2)} className="page-item">
+                  <li  onClick={()=>{setPage(page+2);window.scrollTo(0, 0);}} className="page-item">
                       <div  className="page-link" >{page+2}</div>
                   </li>:""}
                   {page !== paginationInfo.pageCount?
                   <li  className="next">
-                      <div onClick={()=>setPage((prev)=>prev+1)} aria-label="Next">
+                      <div onClick={()=>{setPage((prev)=>prev+1);window.scrollTo(0, 0)}} aria-label="Next">
                           вперед<i  className="w-icon-long-arrow-right"></i>
                       </div>
                   </li>:''}
