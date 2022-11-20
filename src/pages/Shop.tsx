@@ -18,6 +18,8 @@ export default function Shop() {
 
     const { loading, error, data } = useQuery(BRANDS_QUERY);
     
+    const [page, setPage] = useState(false);
+    
 
     let allBrands: string[] = [];
     if(!loading) {
@@ -73,18 +75,18 @@ export default function Shop() {
                                     <h3  className="widget-title"><label>Цены :</label></h3>
                                     <div  className="widget-body">
                                         <ul  className="filter-items search-ul">
-                                            <li><div onClick={()=>{setMin('0');setMax('1000')}}>0₽ - 1000₽</div></li>
-                                            <li><div onClick={()=>{setMin('1000');setMax('2000')}}>1000₽ - 2000₽</div></li>
-                                            <li><div onClick={()=>{setMin('2000');setMax('3000')}}>2000₽ - 3000₽</div></li>
-                                            <li><div onClick={()=>{setMin('3000');setMax('5000')}}>3000₽ - 5000₽</div></li>
-                                            <li><div onClick={()=>{setMin('5000');setMax('1000000000')}}>5000₽+</div></li>
+                                            <li><div onClick={()=>{setPage(!page);setMin('0');setMax('1000')}}>0₽ - 1000₽</div></li>
+                                            <li><div onClick={()=>{setPage(!page);setMin('1000');setMax('2000')}}>1000₽ - 2000₽</div></li>
+                                            <li><div onClick={()=>{setPage(!page);setMin('2000');setMax('3000')}}>2000₽ - 3000₽</div></li>
+                                            <li><div onClick={()=>{setPage(!page);setMin('3000');setMax('5000')}}>3000₽ - 5000₽</div></li>
+                                            <li><div onClick={()=>{setPage(!page);setMin('5000');setMax('1000000000')}}>5000₽+</div></li>
                                         </ul>
                                         <form className="price-range">
                                             <input type="number" name="min_price" className="min_price text-center" placeholder="₽min" 
-                                               value={min} onChange={(event) => setMin(event.currentTarget.value)} style={{width:'90px'}}/>
+                                               value={min} onChange={(event) => {setPage(!page);setMin(event.currentTarget.value)}} style={{width:'90px'}}/>
                                             <span  className="delimiter">-</span>
                                             <input type="number" name="max_price"  className="max_price text-center" placeholder="₽max" 
-                                               value={max} onChange={(event) => setMax(event.currentTarget.value)} style={{width:'90px'}}/>
+                                               value={max} onChange={(event) => {setPage(!page);setMax(event.currentTarget.value)}} style={{width:'90px'}}/>
                                             {/* <a href="/"  className="btn btn-primary btn-rounded">найти </a> */}
                                         </form>
                                     </div>
@@ -102,7 +104,7 @@ export default function Shop() {
                                                 return (
                                                     <>
                                                     <li className={brand.includes(item.attributes.title)? "active" : ''}>
-                                                        <div onClick={brand.includes(item.attributes.title)? ()=>removeBrand(item.attributes.title): ()=>addBrand(item.attributes.title)}>{item.attributes.title}</div>
+                                                        <div onClick={brand.includes(item.attributes.title)? ()=>{setPage(!page);removeBrand(item.attributes.title)}: ()=>{setPage(!page);addBrand(item.attributes.title)}}>{item.attributes.title}</div>
                                                     </li>
                                                     </>
                                                 )
@@ -121,8 +123,8 @@ export default function Shop() {
                         
 
                         
-                        <ProdList brand={!brand.length? allBrands: brand} priceFrom={+min} priceTo={+max} search={localStorage.getItem('search')}/>
-                        <h3><Link style={{fontSize:'18px'}} to="/shop-stroi-material" onClick={()=>{setMin('0'); setMax('1000000000'); setBrand([]);localStorage.setItem('search', '');}}>Показать все товары</Link></h3>
+                        <ProdList brand={!brand.length? allBrands: brand} priceFrom={+min} priceTo={+max} search={localStorage.getItem('search')} newPage={page}/>
+                        <h3><Link style={{fontSize:'18px'}} to="/shop-stroi-material" onClick={()=>{setPage(!page);setMin('0'); setMax('1000000000'); setBrand([]);localStorage.setItem('search', '');}}>Показать все товары</Link></h3>
                     </div>
 
 

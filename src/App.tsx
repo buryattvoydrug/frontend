@@ -24,7 +24,6 @@ function App() {
   const loc = useLocation();
   const [location, setLocation] = useState(loc.pathname);
   useEffect(() => {
-    console.log(loc.pathname);
     if (loc.pathname === '/') {
         localStorage.setItem('search', '');
     }

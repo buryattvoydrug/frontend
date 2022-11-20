@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import FILTRED_PRODUCTS_QUERY from '../queries/products/filtredproducts';
 import PRODUCTS_QUERY from '../queries/products/products';
@@ -14,15 +14,20 @@ export default function ProdList(props: any) {
         if (arr.length === 2 && arr[1].length === 2) end = end.concat(arr[1]);
         if (arr.length === 2 && arr[1].length === 1) end = end.concat(arr[1]+'0');
         else end = end.concat('00');
-        console.log(arr[0], end);
         return arr[0]+end+' ₽ ';
     }
 
-  const { brand, priceFrom, priceTo,  search } = props;
+  const { brand, priceFrom, priceTo,  search, newPage } = props;
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState("price:desc");
-  const [pageSize, setPageSize] = useState(24);
   let { slug } = useParams();
+  let loc = window.location.hash;
+  useEffect(()=>{
+    setPage(1);
+  },[loc])
+  useEffect(()=>{
+    if (newPage) setPage(1);
+  },[newPage])
   return (
     <>
     
@@ -39,7 +44,7 @@ export default function ProdList(props: any) {
       {({data: { articles } }: any) => {
         let items = articles.data;
         const paginationInfo = articles.meta.pagination;
-        console.log(paginationInfo)
+
         return (
           <>
           <nav  className="toolbox sticky-toolbox sticky-content fix-top">
@@ -96,9 +101,9 @@ export default function ProdList(props: any) {
                             </h3>
                             <div  className="product-pa-wrapper">
                                 <div  className="product-price">
-                                    {product.attributes.priceText === 'от' && product.attributes.priceText+' '}
+                                    {product.attributes.priceText === 'от' && product.attributes.priceText+' '+priceToString(product.attributes.price)}
                                     {product.attributes.priceText === null && priceToString(product.attributes.price)}
-                                    {product.attributes.price > 1 && product.attributes.priceText !== null && priceToString(product.attributes.price) + product.attributes.priceText}
+                                    {product.attributes.price > 1 && product.attributes.priceText !== null && product.attributes.priceText !== 'от' && priceToString(product.attributes.price) + product.attributes.priceText}
                                     {product.attributes.price === 1 && product.attributes.priceText}
                                 </div>
                             </div>
