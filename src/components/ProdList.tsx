@@ -7,6 +7,17 @@ import Query from './Query';
 
 export default function ProdList(props: any) {
 
+
+    function priceToString(price: number) {
+        let arr = String(price).split('.');
+        let end = ',';
+        if (arr.length === 2 && arr[1].length === 2) end = end.concat(arr[1]);
+        if (arr.length === 2 && arr[1].length === 1) end = end.concat(arr[1]+'0');
+        else end = end.concat('00');
+        console.log(arr[0], end);
+        return arr[0]+end+' ₽ ';
+    }
+
   const { brand, priceFrom, priceTo,  search } = props;
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState("price:desc");
@@ -65,6 +76,7 @@ export default function ProdList(props: any) {
           <div  className="product-wrapper row cols-xl-5 cols-lg-3 cols-md-4 cols-sm-3 cols-2">
             
             {items.map((product: any) => {
+
               return (
                 <>
                 <div  className="product-wrap" style={{paddingBottom: '10px'}}>
@@ -84,7 +96,9 @@ export default function ProdList(props: any) {
                             </h3>
                             <div  className="product-pa-wrapper">
                                 <div  className="product-price">
-                                    {product.attributes.price} ₽
+                                    {product.attributes.priceText === 'от' && product.attributes.priceText+' '}
+                                    {product.attributes.price > 1 ? priceToString(product.attributes.price) :
+                                    product.attributes.priceText}
                                 </div>
                             </div>
                         </div>

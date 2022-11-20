@@ -45,6 +45,7 @@ query Tovars(
         slug
         title
         price
+        priceText
         podkategoriya  {
           data {
             attributes  {
